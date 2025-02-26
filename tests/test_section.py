@@ -11,11 +11,11 @@ class TestSection:
         driver.find_element(By.XPATH, Xpath.PASSWORD_INPUT).send_keys(Data.PASSWORD)
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located
-                                        ((By.XPATH, Data.SAUCESS_BUTTON)))
-        driver.find_element(By.XPATH, Data.SAUCESS_BUTTON).click()
-        element = driver.find_element(By.XPATH, '//p[contains(text(), "Соус")]')
+                                        ((By.XPATH, Xpath.SAUCESS_BUTTON)))
+        driver.find_element(By.XPATH, Xpath.SAUCESS_BUTTON).click()
+        element = driver.find_element(By.XPATH, Xpath.SAUCESS_STR)
         driver.execute_script("arguments[0].scrollIntoView();", element)
-        assert "Соус" and "BurgerIngredient_ingredient__text__yp3dH" in driver.page_source
+        assert "BurgerIngredient_ingredient__text__yp3dH" in element.get_attribute("class")
 
     def test_swap_section_to_rolls(self, driver):
         driver.get(Data.SITE)
@@ -24,15 +24,14 @@ class TestSection:
         driver.find_element(By.XPATH, Xpath.PASSWORD_INPUT).send_keys(Data.PASSWORD)
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located
-                                        ((By.XPATH, Data.ROLLS_BUTTON)))
-        driver.find_element(By.XPATH, Data.SAUCESS_BUTTON).click()
+                                        ((By.XPATH, Xpath.ROLLS_BUTTON)))
+        driver.find_element(By.XPATH, Xpath.SAUCESS_BUTTON).click()
         WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located
-                                        ((By.XPATH, Data.ROLLS_BUTTON)))
-        driver.find_element(By.XPATH, Data.ROLLS_BUTTON).click()
-        element = driver.find_element(By.XPATH, '//p[contains(text(), "булка")]')
+                                        ((By.XPATH, Xpath.ROLLS_BUTTON)))
+        driver.find_element(By.XPATH, Xpath.ROLLS_BUTTON).click()
+        element = driver.find_element(By.XPATH, Xpath.ROLLS_STR)
         driver.execute_script("arguments[0].scrollIntoView();", element)
-        assert "булка" and "BurgerIngredient_ingredient__text__yp3dH" in driver.page_source
-
+        assert "BurgerIngredient_ingredient__text__yp3dH" in element.get_attribute("class")
 
     def test_swap_section_to_toppings(self, driver):
         driver.get(Data.SITE)
@@ -41,8 +40,8 @@ class TestSection:
         driver.find_element(By.XPATH, Xpath.PASSWORD_INPUT).send_keys(Data.PASSWORD)
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 10).until(
-            expected_conditions.visibility_of_element_located((By.XPATH, Data.TOPPINGS_BUTTON)))
-        driver.find_element(By.XPATH, Data.TOPPINGS_BUTTON).click()
-        element = driver.find_element(By.XPATH, '//p[contains(text(), "Мясо")]')
+            expected_conditions.visibility_of_element_located((By.XPATH, Xpath.TOPPINGS_BUTTON)))
+        driver.find_element(By.XPATH, Xpath.TOPPINGS_BUTTON).click()
+        element = driver.find_element(By.XPATH, Xpath.TOPPINGS_STR)
         driver.execute_script("arguments[0].scrollIntoView();", element)
-        assert "Мясо" and "BurgerIngredient_ingredient__text__yp3dH" in driver.page_source
+        assert "BurgerIngredient_ingredient__text__yp3dH" in element.get_attribute("class")

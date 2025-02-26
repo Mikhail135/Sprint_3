@@ -28,9 +28,9 @@ class TestAccount:
         driver.find_element(By.XPATH, Xpath.PERSONAL_ACCOUNT).click()
         WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((
             By.XPATH, Xpath.LOG_OUT)))
-        driver.find_element(By.XPATH, '//*[contains(text(), "Конструктор")]').click()
+        driver.find_element(By.XPATH, Xpath.CONSTRUCRT).click()
         WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((
-            By.XPATH, '//*[contains(text(), "Соберите бургер")]')))
+            By.XPATH, Xpath.CREAT_BURGER)))
         assert "Соберите бургер" in driver.page_source
 
 

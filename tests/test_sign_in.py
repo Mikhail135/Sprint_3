@@ -32,4 +32,4 @@ class TestSignin:
             expected_conditions.visibility_of_element_located(
                 (By.XPATH, Xpath.ERROR_MESSAGE)))
         assert 'Некорректный пароль' in driver.page_source
-        driver.quit()
+

@@ -12,7 +12,7 @@ class TestLogin:
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(
-                (By.XPATH, '//h1[contains(text(), "Соберите бургер")]')))
+                (By.XPATH, Xpath.CREAT_BURGER)))
         assert "Соберите бургер" in driver.page_source
 
 
@@ -24,7 +24,7 @@ class TestLogin:
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(
-                (By.XPATH, '//h1[contains(text(), "Соберите бургер")]')))
+                (By.XPATH, Xpath.CREAT_BURGER)))
         assert "Соберите бургер" in driver.page_source
 
     def test_log_in_reg_form(self, driver):
@@ -37,20 +37,20 @@ class TestLogin:
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(
-                (By.XPATH, '//h1[contains(text(), "Соберите бургер")]')))
+                (By.XPATH, Xpath.CREAT_BURGER)))
         assert "Соберите бургер" in driver.page_source
 
     def test_log_in_through_forgot_password(self, driver):
         driver.get(Data.SITE_FORGOT_PASSWORD)
         WebDriverWait(driver, 10).until(
-            expected_conditions.presence_of_element_located((By.XPATH, '//a[@href="/login"]')))
-        driver.find_element(By.XPATH, '//a[@href="/login"]').click()
+            expected_conditions.presence_of_element_located((By.XPATH, Xpath.REGISTER_LINK)))
+        driver.find_element(By.XPATH, Xpath.REGISTER_LINK).click()
         driver.find_element(By.XPATH, Xpath.EMAIL_INPUT).send_keys(Data.EMAIL)
         driver.find_element(By.XPATH, Xpath.PASSWORD_INPUT).send_keys(Data.PASSWORD)
         driver.find_element(By.XPATH, Xpath.SHORT_LOG_IN).click()
         WebDriverWait(driver, 15).until(
             expected_conditions.visibility_of_element_located(
-                (By.XPATH, '//h1[contains(text(), "Соберите бургер")]')))
+                (By.XPATH, Xpath.CREAT_BURGER)))
         assert "Соберите бургер" in driver.page_source
 
 
